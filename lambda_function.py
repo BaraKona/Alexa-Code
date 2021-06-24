@@ -36,20 +36,7 @@ class LaunchRequestHandler(AbstractRequestHandler):
                 .response
         )
 
-class JavaWhatSkillsIntentHandler(AbstractRequestHandler):
-    """Handler for What skills"""
-    def can_handle(self, handler_input):
-        return ask_utils.is_intent_name("JavaWhatSkillsIntent")(handler_input)
-    def handle(self, handler_input):  
-        speak_output = "I have a number of Java skills. You can ask me various questions such as: What is Object Oriented Programming. Or how do you write a method"
-        
-        return (
-            handler_input.response_builder
-                .speak(speak_output)
-                .response
-        )
-        
-    class HelloWorldIntentHandler(AbstractRequestHandler):
+class HelloWorldIntentHandler(AbstractRequestHandler):
     """Handler for Hello World Intent."""
     def can_handle(self, handler_input):
         # type: (HandlerInput) -> bool
@@ -84,6 +71,33 @@ class HelpIntentHandler(AbstractRequestHandler):
                 .response
         )
 
+class JavaWhatSkillsIntentHandler(AbstractRequestHandler):
+    """Handler for What skills"""
+    def can_handle(self, handler_input):
+        return ask_utils.is_intent_name("JavaWhatSkillsIntent")(handler_input)
+    def handle(self, handler_input):  
+        speak_output = "I have a number of Java skills. You can ask me various questions such as: What is Object Oriented Programming. Or how do you write a method"
+        
+        return (
+            handler_input.response_builder
+                .speak(speak_output)
+                .response
+        )
+
+
+class JavaOOPHandler(AbstractRequestHandler):
+    """Handler for OOP"""
+    def can_handle(sef, handler_input):
+        return ask_utils.is_intent_name("JavaOOP")(handler_input)
+    def handle(self, handler_input):
+        speak_output = """Object-oriented programming (OOP) is a computer programming model that organizes software design around data, or objects, 
+        rather than functions and logic. An object can be defined as a data field that has unique attributes and behavior. OOP focuses on the objects 
+        that developers want to manipulate rather than the logic required to manipulate them. This approach to programming is well-suited for programs 
+        that are large, complex and actively updated or maintained.""" 
+        return (handler_input.response_builder
+                .speak(speak_output)
+                .response
+        )
 
 class CancelOrStopIntentHandler(AbstractRequestHandler):
     """Single handler for Cancel and Stop Intent."""
