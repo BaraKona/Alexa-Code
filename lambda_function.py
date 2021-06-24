@@ -27,7 +27,7 @@ class LaunchRequestHandler(AbstractRequestHandler):
 
     def handle(self, handler_input):
         # type: (HandlerInput) -> Response
-        speak_output = "Welcome, you can say Hello or Help. Which would you like to try?"
+        speak_output = "Welcome, this is loomin code. I'm here to help you answer your coding questions. Have a question? Shoot!"
 
         return (
             handler_input.response_builder
@@ -37,6 +37,7 @@ class LaunchRequestHandler(AbstractRequestHandler):
         )
 
 class JavaWhatSkillsIntentHandler(AbstractRequestHandler):
+    """Handler for What skills"""
     def can_handle(self, handler_input):
         return ask_utils.is_intent_name("JavaWhatSkillsIntent")(handler_input)
     def handle(self, handler_input):  
@@ -48,7 +49,7 @@ class JavaWhatSkillsIntentHandler(AbstractRequestHandler):
                 .response
         )
         
-class HelloWorldIntentHandler(AbstractRequestHandler):
+    class HelloWorldIntentHandler(AbstractRequestHandler):
     """Handler for Hello World Intent."""
     def can_handle(self, handler_input):
         # type: (HandlerInput) -> bool
@@ -183,6 +184,7 @@ sb = SkillBuilder()
 
 sb.add_request_handler(LaunchRequestHandler())
 sb.add_request_handler(HelloWorldIntentHandler())
+sb.add_request_handler(JavaWhatSkillsIntentHandler())
 sb.add_request_handler(HelpIntentHandler())
 sb.add_request_handler(CancelOrStopIntentHandler())
 sb.add_request_handler(FallbackIntentHandler())
