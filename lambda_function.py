@@ -36,13 +36,24 @@ class LaunchRequestHandler(AbstractRequestHandler):
                 .response
         )
 
-
+class JavaWhatSkillsIntentHandler(AbstractRequestHandler):
+    def can_handle(self, handler_input):
+        return ask_utils.is_intent_name("JavaWhatSkillsIntent")(handler_input)
+    def handle(self, handler_input):  
+        speak_output = "I have a number of Java skills. You can ask me various questions such as: What is Object Oriented Programming. Or how do you write a method"
+        
+        return (
+            handler_input.response_builder
+                .speak(speak_output)
+                .response
+        )
+        
 class HelloWorldIntentHandler(AbstractRequestHandler):
     """Handler for Hello World Intent."""
     def can_handle(self, handler_input):
         # type: (HandlerInput) -> bool
         return ask_utils.is_intent_name("HelloWorldIntent")(handler_input)
-
+        
     def handle(self, handler_input):
         # type: (HandlerInput) -> Response
         speak_output = "Hello World!"
